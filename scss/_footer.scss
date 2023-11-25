@@ -1,0 +1,73 @@
+/* ====== Footer ====== */
+footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    .footer-navbar {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 33.6px;
+        border-radius: 7px;
+    }
+
+    .footer__logo {
+        margin: 0;
+        height: 55px;
+        width: auto;
+
+        img {
+            width: auto;
+            height: 100%;
+            border-radius: 7px;
+        }
+    }
+
+    .footer__social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                border: 1px solid $color-2;
+                background-color: $light-1;
+            }
+        }
+
+        .github {
+            color: $blue-2;
+        }
+
+        .discord {
+            color: $blue-2;
+        }
+
+        .html {
+            color: $orange-2;
+        }
+
+        .css {
+            color: $blue-1;
+        }
+
+        .react {
+            color: $blue-3;
+        }
+    }
+}

@@ -1,0 +1,105 @@
+/* ======= Contenido ======= */
+.temas-container {
+    width: 100%;
+
+    .temas__title {
+        margin-top: 25px;
+        text-align: center;
+
+        h2 {
+            color: $light-7;
+            font-size: 44px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Bungee', cursive;
+        }
+    }
+
+    .temas__contenido {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        
+
+        .temas__img {
+            margin-bottom: 50px;
+
+            img {
+                border-radius: 7px;
+                max-width: 100%;
+                height: auto;
+                width: 650px;
+            }
+        }
+
+        .separadores {
+            color: $light-4;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tema {
+            margin-top: 45px;
+            margin-bottom: 45px;
+
+            h2 {
+                text-align: left;
+                font-size: 25px;
+                font-family: 'Bungee', cursive;
+                color: $light-6;
+                margin-top: 30px;
+            }
+
+            .tema__subtitulo {
+                font-size: 18px;
+                color: $light-6;
+            }
+
+            .tema__parrafo {
+                font-size: 16px;
+                text-align: left;
+                margin-top: 16px;
+                margin-bottom: 16px;
+                color: $light-5;
+            }
+
+
+        }
+
+        .tema__lista {
+            text-align: left;
+            line-height: 30px;
+            color: $light-5;
+        }
+    }
+
+    .botones__cambio {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 7px;
+
+        .boton__caja {
+
+            a {
+
+                font-size: 14px;
+                padding: 10px;
+                border-radius: 7px;
+                text-decoration: none;
+                color: $light-6;
+                font-weight: 500;
+                background-color: $color-2;
+                border: 1px solid $color-2;
+
+                &:hover {
+                    background-color: $color-3;
+
+                }
+            }
+        }
+    }
+}

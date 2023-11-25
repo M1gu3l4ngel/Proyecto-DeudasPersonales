@@ -1,0 +1,20 @@
+/* ======= Reseteo ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* ======= Hojas SCSS ======= */
+@import "fonts";
+@import "vars";
+@import "webkit";
+@import "mixing";
+@import "hover";
+@import "darkmode";
+@import "estructura";
+@import "header";
+@import "home";
+@import "paginas";
+@import "footer";
+@import "queries";

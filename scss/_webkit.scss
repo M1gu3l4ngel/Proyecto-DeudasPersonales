@@ -1,0 +1,21 @@
+/* ====== Color al seleccionar/copiar texto en web ====== */
+::selection {
+    background-color: $light-6;
+    color: $white-1;
+}
+/* ====== Ancho y Alto del Scroll ====== */
+html::-webkit-scrollbar {
+    width: 8px;
+    background-color: $light-8;
+    border-radius: 0.25rem;
+    box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+/* ====== Ponemos un color de fondo y redondeamos las esquinas del thumb ====== */
+html::-webkit-scrollbar-thumb {
+    background: $color-2;
+    border-radius: 0.25rem;
+}
+/* ====== Cambiamos el fondo cuando esté en hover ====== */
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #dfc81c;
+}

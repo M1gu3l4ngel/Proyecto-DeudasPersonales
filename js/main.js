@@ -23,6 +23,193 @@ if (storedTheme) {
 }
 //-----------------------------------------------
 
+
+
+
+
+
+
+
+
+// JavaScript (script.js)
+document.addEventListener('DOMContentLoaded', function () {
+    let deudas = JSON.parse(localStorage.getItem('deudas')) || [];
+
+    function guardarDeudasEnLocalStorage() {
+        localStorage.setItem('deudas', JSON.stringify(deudas));
+    }
+
+    window.agregarDeuda = function () {
+        const nombreInput = document.getElementById('nombre');
+        const descripcionInput = document.getElementById('descripcion');
+        const montoTotalInput = document.getElementById('montoTotal');
+
+        const nombre = nombreInput.value;
+        const descripcion = descripcionInput.value;
+        const montoTotal = parseFloat(montoTotalInput.value);
+
+        // Validar que los campos obligatorios estén llenos
+        if (!nombre || !descripcion || isNaN(montoTotal)) {
+            alert('Por favor, completa todos los campos para agregar una deuda.');
+            return;
+        }
+
+        // Buscar si ya existe una deuda con el mismo nombre
+        const deudaExistente = deudas.find(d => d.nombre === nombre);
+
+        if (deudaExistente) {
+            // Sumar el monto total de la nueva deuda a la deuda existente
+            deudaExistente.montoTotal += montoTotal;
+        } else {
+            // Si no existe, agregar una nueva deuda
+            const deuda = {
+                nombre,
+                descripcion,
+                montoTotal,
+                abonado: 0
+            };
+
+            deudas.push(deuda);
+        }
+
+        // Restablecer valores del formulario
+        nombreInput.value = '';
+        descripcionInput.value = '';
+        montoTotalInput.value = '';
+
+        mostrarDeudas();
+        guardarDeudasEnLocalStorage();
+    }
+
+    window.abonarDeuda = function (index) {
+        const deuda = deudas[index];
+
+        if (deuda) {
+            document.getElementById('abonarModalLabel').innerText = `Abonar a ${deuda.nombre}`;
+            // Asignar el índice de la deuda actual al botón de abonar
+            document.getElementById('abonarModal').dataset.deudaIndex = index;
+            // Limpiar el campo de abono en el modal
+            document.getElementById('abonoModal').value = '';
+            // Mostrar el modal
+            $('#abonarModal').modal('show');
+        } else {
+            alert('No se encontró ninguna deuda para ese nombre.');
+        }
+    }
+
+    window.abonarDeudaModal = function () {
+        const index = document.getElementById('abonarModal').dataset.deudaIndex;
+        const abono = parseFloat(document.getElementById('abonoModal').value);
+
+        // Validar que el abono sea un número válido
+        if (isNaN(abono)) {
+            alert('Por favor, ingresa un monto válido.');
+            return;
+        }
+
+        const deuda = deudas[index];
+
+        if (deuda) {
+            const saldoPendiente = deuda.montoTotal - deuda.abonado;
+
+            if (abono > saldoPendiente) {
+                alert('No puedes abonar más del saldo pendiente.');
+                return;
+            }
+
+            deuda.abonado += abono;
+
+            if (deuda.abonado >= deuda.montoTotal) {
+                // Marcar la deuda como completamente saldada
+                deuda.abonado = deuda.montoTotal;
+
+                // Eliminar la deuda del array
+                deudas = deudas.filter(d => d.nombre !== deuda.nombre);
+            }
+
+            mostrarDeudas();
+            guardarDeudasEnLocalStorage();
+
+            // Cerrar el modal
+            $('#abonarModal').modal('hide');
+
+            // Restablecer estilos del body después de cerrar el modal
+            $('body').css('overflow', 'auto');
+            $('body').css('padding-right', '0');
+        }
+    }
+
+    function mostrarDeudas() {
+        const debtListContainer = document.getElementById('debtList');
+        const noDebtMessage = document.getElementById('noDebtMessage');
+
+        // Limpia el contenido actual
+        debtListContainer.innerHTML = '';
+
+        if (deudas.length === 0) {
+            // No hay deudas, mostrar el mensaje
+            noDebtMessage.style.display = 'block';
+        } else {
+            noDebtMessage.style.display = 'none';
+
+            // Hay deudas, mostrarlas
+            deudas.forEach((deuda, index) => {
+                const deudaElement = document.createElement('div');
+                deudaElement.classList.add('debt-container');
+
+                const montoTotal = typeof deuda.montoTotal === 'number' ? deuda.montoTotal : 0;
+                const abonado = typeof deuda.abonado === 'number' ? deuda.abonado : 0;
+                const saldoPendiente = Math.max(montoTotal - abonado, 0);
+
+                deudaElement.innerHTML = `
+                    <div class="debt-name">${deuda.nombre}</div>
+                    <div class="debt-details">
+                        <span class="debt-description">${deuda.descripcion}</span></p>
+                        <hr class="separadores">
+                        <p><strong>Deuda Total:</strong><br><span class="debt-amount">$${montoTotal.toFixed(2)}</span></p>
+                        <p><strong>Abono Total:</strong><br> <span class="debt-amount">$${abonado.toFixed(2)}</span></p>
+                        <p><strong>Deuda Pendiente:</strong><br> <span class="debt-amount amnt-pending">$${saldoPendiente.toFixed(2)}</span></p>
+                    </div>
+                    <hr class="separadores">
+                    <div class="debt-actions">
+                        <button class="btn btn-primary" onclick="abonarDeuda(${index})" data-toggle="modal" data-target="#abonarModal">Abonar</button>
+                    </div>
+                `;
+
+                debtListContainer.appendChild(deudaElement);
+
+                if (abonado >= montoTotal) {
+                    // No mostramos la deuda si está completamente saldada
+                    deudaElement.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    // Al cargar la página, muestra las deudas
+    mostrarDeudas();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //-----------------------------------------------
 // Iniciar AOSAnimation
 //-----------------------------------------------

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./assets/img/js.png" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/logoms.jpg" />
     <!-- Descripción -->
     <meta name="description" content="">
     <!-- Palabras Clave -->
@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Titulo -->
-    <title>Ejemplo - Starter Template</title>
+    <title>Inicio - Deudas Personales</title>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <!-- Iconos FontAwesome -->
@@ -31,7 +31,7 @@
             <nav class="card navbar navbar-expand-lg header-nav">
                 <div class="container">
                     <a class="navbar-brand hvr-grow header__logo" href="./index.html">
-                        <img src="./assets/img/js.png" alt="Logo de Junior School JS">
+                        <img src="./assets/img/logoms.jpg" alt="Logo de Junior School JS">
                     </a>
                     <div class="header-toggle">
                         <input class="toggle__input" type="checkbox" id="switch" name="mode">
@@ -45,41 +45,12 @@
                         <img src="./assets/img/avatar7.png" alt="Imagen" class="dropdown-toggle hvr-grow"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         <ul class="dropdown-menu dropdown-menu-end header-dropdown">
-                            <p class="dropdown-header">Título Aquí</p>
+                            <p class="dropdown-header">Menú</p>
                             <li>
-                                <a class="dropdown-item activo" href="../index.html">Inicio</a>
+                                <a class="dropdown-item activo" href="../index.html">Deudas Actuales</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="./pages/pruebas.html">Pruebas</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <div class="dropdown-divider"></div>
-                            <p class="dropdown-header">Título Aquí</p>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Link</a>
+                                <a class="dropdown-item" href="#">Historial de Deudas</a>
                             </li>
                             <div class="dropdown-divider"></div>
                             <li>
@@ -96,35 +67,62 @@
         <!-- ====== Contenido ====== -->
         <section class="container">
             <div class="home-title">
-                <h2>Ejemplo 5</h2>
+                <h2>Deudas Personales 💰</h2>
             </div>
         </section>
         <div class="container main-container">
             <div class="row gy-3 gx-3 row-cols-1 row-cols-md-2 row-cols-xl-3 d-lg-flex justify-content-lg-center">
-                <div class="col-md-8 col-xl-8 main-card-box">
-                    <div class="card main__card" style="height: 625px;">
-                        <div class="main-card__info">
-                            <h2 class="card-title">
-                                Título Aquí
-                            </h2>
-                            <div class="main-card__button">
-                                <a href="#" role="button">Texto Aquí</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-4 col-xl-4 main-card-box">
-                    <div class="card main__card" style="height: 625px;">
-                        <div class="main-card__info">
-                            <h2 class="card-title">
-                                Título Aquí
-                            </h2>
-                            <div class="main-card__button">
-                                <a href="#" role="button">Texto Aquí</a>
+                    <div class="card main__card2" style="height: 625px;">
+                        <div class="form-container" id="debtForm">
+                            <form>
+                                <label for="nombre">Nombre del Acreedor :</label>
+                                <input type="text" id="nombre" required autocomplete="off">
+
+                                <label for="descripcion">Descripción de la Deuda:</label>
+                                <input type="text" id="descripcion" required autocomplete="off">
+
+                                <label for="montoTotal">Monto total:</label>
+                                <input type="text" id="montoTotal" step="0.01" required autocomplete="off">
+                                <div class="form__cont-button">
+                                    <button type="button" onclick="agregarDeuda()">Agregar Deuda</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-xl-8 main-card-box">
+                    <div class="main__card1">
+                        <div id="debtList" class="debt-list-container"></div>
+                        <div class="nodebt-message-container">
+                            <div id="noDebtMessage" class="no-debt-message" style="display: none;">Sin Deudas 😍</div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Modal para abonar directamente desde la deuda -->
+                <div class="modal fade" id="abonarModal" tabindex="-1" aria-labelledby="abonarModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="abonarModalLabel">Abonar Deuda</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="abonoModal">Monto a abonar:</label>
+                                <input type="number" id="abonoModal" step="0.01" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="abonarDeudaModal()">Abonar</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- ====== Footer ====== -->
@@ -132,26 +130,26 @@
             <nav class="card container navbar navbar-expand-lg footer-navbar">
                 <div class="container">
                     <a class="navbar-brand hvr-grow footer__logo" href="./index.html">
-                        <img src="./assets/img/js.png" alt="Logo de Junior School JS">
+                        <img src="./assets/img/logoms.jpg" alt="Logo de Junior School JS">
                     </a>
                     <div class="footer__social">
                         <a href="#"><i class="fa-brands fa-github github"></i></a>
                         <a href="#"><i class="fa-brands fa-discord discord"></i></a>
-                        <a href="#"><i class="fa-brands fa-html5 html"></i></a>
-                        <a href="#"><i class="fa-brands fa-css3-alt css"></i></a>
-                        <a href="#"><i class="fa-brands fa-react react"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in linkdn"></i></a>
                     </div>
                 </div>
             </nav>
         </footer>
     </main>
 
-    <!-- ====== Boostrap v5.3.2 ====== -->
+    <!-- ====== Bootstrap v5.3.2 ====== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- ====== AOSAnimation ====== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- ====== JavaScript ====== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>
 

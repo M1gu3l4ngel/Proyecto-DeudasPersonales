@@ -20,7 +20,7 @@
 /* ====== Transiciones ====== */
 /* ====== Color al seleccionar/copiar texto en web ====== */
 ::selection {
-  background-color: #3a3b3c;
+  background-color: #66C61C;
   color: #fff; }
 
 /* ====== Ancho y Alto del Scroll ====== */
@@ -32,7 +32,7 @@ html::-webkit-scrollbar {
 
 /* ====== Ponemos un color de fondo y redondeamos las esquinas del thumb ====== */
 html::-webkit-scrollbar-thumb {
-  background: #f7df1e;
+  background: #66C61C;
   border-radius: 0.25rem; }
 
 /* ====== Cambiamos el fondo cuando esté en hover ====== */
@@ -61,8 +61,7 @@ html[data-theme='dark'] header .header-nav .header-toggle .toggle__label .toggle
 
 body {
   height: 100%;
-  width: 100%;
-  transition: all 0.5s ease; }
+  width: 100%; }
   body .home {
     min-height: 100vh;
     width: 100%;
@@ -92,7 +91,7 @@ header {
       height: 55px;
       width: auto; }
       header .header-nav .header__logo img {
-        width: auto;
+        width: 50px;
         height: 100%;
         border-radius: 7px; }
     header .header-nav .header-toggle .toggle__input {
@@ -101,7 +100,7 @@ header {
       height: 20px;
       width: 50px; }
     header .header-nav .header-toggle .toggle__label {
-      background-color: #f7df1e;
+      background-color: #66C61C;
       border-radius: 7px;
       cursor: pointer;
       display: flex;
@@ -143,12 +142,12 @@ header {
         color: #3a3b3c;
         transition: background-color 0.3s ease; }
         header .header-nav .header-profile li a:hover:not(.activo) {
-          background-color: #fff7b7; }
+          background-color: #E3FBCC; }
         header .header-nav .header-profile li a.active, header .header-nav .header-profile li a.show {
-          background-color: #f7df1e;
+          background-color: #66C61C;
           color: #3a3b3c; }
       header .header-nav .header-profile li .activo {
-        background-color: #f7df1e;
+        background-color: #66C61C;
         font-weight: 500; }
 
 /* ====== Contenido ====== */
@@ -166,31 +165,114 @@ header {
 .main-container {
   padding-top: 24px;
   padding-bottom: 24px; }
-  .main-container .main-card-box .main__card {
-    height: 150px;
+  .main-container .main-card-box .main__card1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px; }
-    .main-container .main-card-box .main__card .main-card__info {
-      word-wrap: break-word;
-      text-align: center; }
-      .main-container .main-card-box .main__card .main-card__info h2 {
-        font-size: 22px;
-        color: #242526;
-        margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 100%; }
+    .main-container .main-card-box .main__card1 #debtList {
+      width: 100%;
+      /* O ajusta el ancho según tus necesidades */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 19px;
+      /* Espacio entre las cajas */
+      border-radius: 6px; }
+      .main-container .main-card-box .main__card1 #debtList .debt-container {
+        flex-basis: calc(33.33% - 13.3px);
+        /* Ajusta el ancho de cada caja y el espacio entre ellas */
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.175);
+        text-align: center; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-name {
+          color: #9b9d9e;
+          margin-bottom: 5px;
+          font-family: 'Bungee', cursive; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details .debt-amount {
+          font-size: 14px;
+          font-weight: 600;
+          color: #66C61C; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details .debt-description {
+          font-size: 16px;
+          font-weight: 600;
+          color: #66C61C; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details strong {
+          color: #9b9d9e;
+          text-transform: uppercase;
+          font-size: 15px;
+          font-weight: 800; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details .amnt-pending {
+          color: #fa3737; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-actions {
+          margin-top: 10px; }
+          .main-container .main-card-box .main__card1 #debtList .debt-container .debt-actions button {
+            padding: 8px;
+            cursor: pointer;
+            background-color: #66C61C;
+            color: #fff;
+            border: 1px solid #66C61C;
+            border-radius: 3px;
+            font-size: 14px;
+            width: 100%; }
+            .main-container .main-card-box .main__card1 #debtList .debt-container .debt-actions button:hover {
+              background-color: #E3FBCC;
+              color: #525252;
+              -webkit-box-shadow: 1px 0px 20px -11px #66C61C;
+              -moz-box-shadow: 1px 0px 20px -11px #66C61C;
+              box-shadow: 1px 0px 20px -11px #66C61C; }
+    .main-container .main-card-box .main__card1 .nodebt-message-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .main-container .main-card-box .main__card1 .nodebt-message-container .no-debt-message {
+        color: #c7c8ca;
+        font-size: 44px;
+        text-align: center;
         font-family: 'Bungee', cursive; }
-      .main-container .main-card-box .main__card .main-card__info .main-card__button a {
-        font-size: 14px;
-        padding: 0.375rem 0.75rem 0.375rem 0.75rem;
-        border-radius: 7px;
-        text-decoration: none;
-        color: #3a3b3c;
-        font-weight: 500;
-        background-color: #f7df1e;
-        border: 1px solid #f7df1e; }
-        .main-container .main-card-box .main__card .main-card__info .main-card__button a:hover {
-          background-color: #fff7b7; }
+  .main-container .main-card-box .main__card2 {
+    align-items: center;
+    justify-content: center; }
+    .main-container .main-card-box .main__card2 .form-container {
+      padding: 15px; }
+      .main-container .main-card-box .main__card2 .form-container form {
+        text-align: center; }
+        .main-container .main-card-box .main__card2 .form-container form label {
+          color: #9b9d9e;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 600; }
+        .main-container .main-card-box .main__card2 .form-container form input {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 25px;
+          box-sizing: border-box;
+          color: #838383;
+          border: 1px solid #c7c8ca;
+          border-radius: 7px;
+          outline: none; }
+          .main-container .main-card-box .main__card2 .form-container form input:focus {
+            -webkit-box-shadow: 1px 0px 20px -11px #66C61C;
+            -moz-box-shadow: 1px 0px 20px -11px #66C61C;
+            box-shadow: 1px 0px 20px -11px #66C61C;
+            border-color: #66C61C; }
+        .main-container .main-card-box .main__card2 .form-container form .form__cont-button button {
+          padding: 8px;
+          cursor: pointer;
+          background-color: #66C61C;
+          color: #fff;
+          border: 1px solid #66C61C;
+          border-radius: 3px;
+          font-size: 14px;
+          width: 100%; }
+          .main-container .main-card-box .main__card2 .form-container form .form__cont-button button:hover {
+            background-color: #E3FBCC;
+            color: #525252;
+            -webkit-box-shadow: 1px 0px 20px -11px #66C61C;
+            -moz-box-shadow: 1px 0px 20px -11px #66C61C;
+            box-shadow: 1px 0px 20px -11px #66C61C; }
 
 /* ======= Contenido ======= */
 .temas-container {
@@ -256,10 +338,10 @@ header {
       text-decoration: none;
       color: #3a3b3c;
       font-weight: 500;
-      background-color: #f7df1e;
-      border: 1px solid #f7df1e; }
+      background-color: #66C61C;
+      border: 1px solid #66C61C; }
       .temas-container .botones__cambio .boton__caja a:hover {
-        background-color: #fff7b7; }
+        background-color: #E3FBCC; }
 
 /* ====== Footer ====== */
 footer {
@@ -280,7 +362,7 @@ footer {
     height: 55px;
     width: auto; }
     footer .footer__logo img {
-      width: auto;
+      width: 50px;
       height: 100%;
       border-radius: 7px; }
   footer .footer__social {
@@ -299,18 +381,16 @@ footer {
       border-radius: 7px;
       transition: background-color 0.3s ease; }
       footer .footer__social a:hover {
-        border: 1px solid #f7df1e;
+        border: 1px solid #3a3b3c;
         background-color: #f0f0f0; }
     footer .footer__social .github {
       color: #7289DA; }
     footer .footer__social .discord {
       color: #7289DA; }
-    footer .footer__social .html {
-      color: #f06529; }
-    footer .footer__social .css {
+    footer .footer__social .twitter {
+      color: #18191a; }
+    footer .footer__social .linkdn {
       color: #0165E1; }
-    footer .footer__social .react {
-      color: #61dbfb; }
 
 /* ====== Por encima de 1400px ====== */
 /* ====== Por debajo de 1400px ====== */

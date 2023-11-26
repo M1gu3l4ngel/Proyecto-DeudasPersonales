@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 /* ======= Hojas SCSS ======= */
 @import "fonts";
 @import "vars";
@@ -16,5 +17,7 @@
 @import "header";
 @import "home";
 @import "paginas";
+@import "historial";
 @import "footer";
+@import "pruebas";
 @import "queries";

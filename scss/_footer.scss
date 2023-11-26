@@ -21,7 +21,7 @@ footer {
         width: auto;
 
         img {
-            width: auto;
+            width: 50px;
             height: 100%;
             border-radius: 7px;
         }
@@ -45,7 +45,7 @@ footer {
             transition: background-color 0.3s ease;
 
             &:hover {
-                border: 1px solid $color-2;
+                border: 1px solid $light-6;
                 background-color: $light-1;
             }
         }
@@ -58,16 +58,12 @@ footer {
             color: $blue-2;
         }
 
-        .html {
-            color: $orange-2;
+        .twitter {
+            color: $light-8;
         }
 
-        .css {
+        .linkdn {
             color: $blue-1;
-        }
-
-        .react {
-            color: $blue-3;
         }
     }
 }

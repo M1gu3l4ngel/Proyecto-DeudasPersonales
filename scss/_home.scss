@@ -67,6 +67,8 @@
                             color: $color-2;
                         }
 
+                        
+
                         strong {
                             color: $light-3;
                             text-transform: uppercase;
@@ -123,6 +125,7 @@
         .main__card2 {
             align-items: center;
             justify-content: center;
+            height: 355px;
 
             .form-container {
                 padding: 15px;
@@ -262,5 +265,5 @@
         }
     }
 
-    
+
 }

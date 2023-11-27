@@ -235,7 +235,8 @@ header {
         display: none; }
   .main-container .main-card-box .main__card2 {
     align-items: center;
-    justify-content: center; }
+    justify-content: center;
+    height: 355px; }
     .main-container .main-card-box .main__card2 .form-container {
       padding: 15px; }
       .main-container .main-card-box .main__card2 .form-container form {
@@ -461,6 +462,10 @@ footer {
     max-width: 955px; } }
 
 /* ====== Por encima de 768px ====== */
+@media screen and (min-width: 768px) {
+  .main-container .main-card-box .main__card2 {
+    height: 730px; } }
+
 /* ====== Por debajo de 768px ====== */
 /* ====== Por encima de 576px ====== */
 /* ====== Por debajo de 576px ====== */
@@ -469,4 +474,10 @@ footer {
     width: 100%;
     display: block; }
   .main-container .main-card-box .main__card1 #debtList .debt-container {
-    margin-bottom: 15px; } }
+    margin-bottom: 15px; }
+  .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details p {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details strong {
+    margin-right: 7px; } }

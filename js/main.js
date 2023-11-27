@@ -69,13 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 abonado: 0
             };
 
-            deudas.push(deuda);            
+            deudas.push(deuda);
         }
 
         // Restablecer valores del formulario
         nombreInput.value = '';
         descripcionInput.value = '';
         montoTotalInput.value = '';
+
+        // Si hay deudas, mostrar el totalDeudasElement
+        const totalDeudasElement = document.getElementById('totalDeudas');
+        totalDeudasElement.style.display = 'block';
 
         mostrarDeudas();
         actualizarTotalDeudas();
@@ -172,20 +176,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 const abonado = typeof deuda.abonado === 'number' ? deuda.abonado : 0;
                 const saldoPendiente = Math.max(montoTotal - abonado, 0);
 
+                // Formatea los montos con comas y sin símbolo de moneda
+                const formattedMontoTotal = formatearNumero(deuda.montoTotal);
+                const formattedAbonado = formatearNumero(deuda.abonado);
+                const formattedSaldoPendiente = formatearNumero(Math.max(deuda.montoTotal - deuda.abonado, 0));
+
                 deudaElement.innerHTML = `
-                    <div class="debt-name">${deuda.nombre}</div>
-                    <div class="debt-details">
-                        <span class="debt-description">${deuda.descripcion}</span></p>
-                        <hr class="separadores">
-                        <p><strong>Deuda Total:</strong><br><span class="debt-amount">$${montoTotal.toFixed(2)}</span></p>
-                        <p><strong>Abonado:</strong><br> <span class="debt-amount">$${abonado.toFixed(2)}</span></p>
-                        <p><strong>Pendiente:</strong><br> <span class="debt-amount amnt-pending">$${saldoPendiente.toFixed(2)}</span></p>
-                    </div>
+                <div class="debt-name">${deuda.nombre}</div>
+                <div class="debt-details">
+                    <span class="debt-description">${deuda.descripcion}</span></p>
                     <hr class="separadores">
-                    <div class="debt-actions">
-                        <button class="btn btn-primary" onclick="abonarDeuda(${index})" data-toggle="modal" data-target="#abonarModal">Abonar</button>
-                    </div>
-                `;
+                    <p><strong>Deuda Total:</strong><br><span class="debt-amount">${formattedMontoTotal}</span></p>
+                    <p><strong>Abonado:</strong><br> <span class="debt-amount">${formattedAbonado}</span></p>
+                    <p><strong>Pendiente:</strong><br> <span class="debt-amount amnt-pending">${formattedSaldoPendiente}</span></p>
+                </div>
+                <hr class="separadores">
+                <div class="debt-actions">
+                    <button class="btn btn-primary" onclick="abonarDeuda(${index})" data-toggle="modal" data-target="#abonarModal">Abonar</button>
+                </div>
+            `;
 
                 debtListContainer.appendChild(deudaElement);
 
@@ -203,8 +212,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // Calcula el total sumando los montos de todas las deudas
         const totalDeudas = deudas.reduce((total, deuda) => total + (deuda.montoTotal - deuda.abonado), 0);
 
-        // Actualiza el contenido del elemento HTML
-        totalDeudasElement.textContent = totalDeudas.toFixed(2);
+        if (totalDeudas > 0) {
+            // Si el total de deudas es mayor que 0, mostrarlo
+            // Formatea el número con comas y sin símbolo de moneda
+            const formattedTotalDeudas = formatearNumero(totalDeudas);
+
+            // Actualiza el contenido del elemento HTML
+            totalDeudasElement.textContent = formattedTotalDeudas;
+        } else {
+            // Si el total de deudas es 0, oculta el elemento
+            totalDeudasElement.style.display = 'none';
+        }
+    }
+
+    // Función para formatear números con comas y sin símbolo de moneda
+    function formatearNumero(numero) {
+        const partes = numero.toFixed(2).toString().split('.');
+        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return partes.join('.');
     }
 
     // Al cargar la página, muestra las deudas

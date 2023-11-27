@@ -124,31 +124,40 @@ header {
       height: 12px;
       width: 12px;
       transition: all 0.5s ease; }
-    header .header-nav .header-profile img {
-      width: 40px;
-      border-radius: 50%;
-      cursor: pointer; }
-    header .header-nav .header-profile .header-dropdown {
-      padding: 5px; }
-    header .header-nav .header-profile p {
-      font-size: 14px;
-      font-weight: 500; }
-    header .header-nav .header-profile li {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 3px; }
-      header .header-nav .header-profile li a {
-        border-radius: 7px;
-        color: #3a3b3c;
-        transition: background-color 0.3s ease; }
-        header .header-nav .header-profile li a:hover:not(.activo) {
-          background-color: #E3FBCC; }
-        header .header-nav .header-profile li a.active, header .header-nav .header-profile li a.show {
-          background-color: #66C61C;
-          color: #3a3b3c; }
-      header .header-nav .header-profile li .activo {
-        background-color: #66C61C;
+    header .header-nav .header-profile {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      header .header-nav .header-profile .totalDeudas {
+        margin: 0 3px 0 0;
+        color: #fa3737;
+        font-weight: 600;
+        font-size: 12px; }
+      header .header-nav .header-profile img {
+        width: 40px;
+        border-radius: 50%;
+        cursor: pointer; }
+      header .header-nav .header-profile .header-dropdown {
+        padding: 5px; }
+      header .header-nav .header-profile p {
+        font-size: 14px;
         font-weight: 500; }
+      header .header-nav .header-profile li {
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 3px; }
+        header .header-nav .header-profile li a {
+          border-radius: 7px;
+          color: #3a3b3c;
+          transition: background-color 0.3s ease; }
+          header .header-nav .header-profile li a:hover:not(.activo) {
+            background-color: #E3FBCC; }
+          header .header-nav .header-profile li a.active, header .header-nav .header-profile li a.show {
+            background-color: #66C61C;
+            color: #3a3b3c; }
+        header .header-nav .header-profile li .activo {
+          background-color: #66C61C;
+          font-weight: 500; }
 
 /* ====== Contenido ====== */
 .home-title {

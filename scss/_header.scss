@@ -70,6 +70,16 @@ header {
         }
 
         .header-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .totalDeudas {
+                margin: 0 3px 0 0;
+                color: $red-1;
+                font-weight: 600;
+                font-size: 12px;
+            }
 
             img {
                 width: 40px;

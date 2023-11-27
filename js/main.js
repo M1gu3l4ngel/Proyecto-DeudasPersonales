@@ -25,19 +25,19 @@ if (storedTheme) {
 
 
 
-
-
-
-
-
-
-// JavaScript (script.js)
+//-----------------------------------------------
+// Funcionamiento del Programa / Deudas Personales
+//-----------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
+    // Cargar las deudas almacenadas en localStorage
     let deudas = JSON.parse(localStorage.getItem('deudas')) || [];
 
     function guardarDeudasEnLocalStorage() {
         localStorage.setItem('deudas', JSON.stringify(deudas));
     }
+
+    mostrarDeudas();
+    actualizarTotalDeudas();
 
     window.agregarDeuda = function () {
         const nombreInput = document.getElementById('nombre');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 abonado: 0
             };
 
-            deudas.push(deuda);
+            deudas.push(deuda);            
         }
 
         // Restablecer valores del formulario
@@ -78,11 +78,18 @@ document.addEventListener('DOMContentLoaded', function () {
         montoTotalInput.value = '';
 
         mostrarDeudas();
+        actualizarTotalDeudas();
         guardarDeudasEnLocalStorage();
+        mostrarNotificacion('success', 'Deuda agregada correctamente.');
     }
 
     window.abonarDeuda = function (index) {
         const deuda = deudas[index];
+
+        mostrarDeudas();
+        actualizarTotalDeudas();
+        guardarDeudasEnLocalStorage();
+
 
         if (deuda) {
             document.getElementById('abonarModalLabel').innerText = `Abonar a ${deuda.nombre}`;
@@ -128,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             mostrarDeudas();
+            actualizarTotalDeudas();
             guardarDeudasEnLocalStorage();
 
             // Cerrar el modal
@@ -136,6 +144,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Restablecer estilos del body después de cerrar el modal
             $('body').css('overflow', 'auto');
             $('body').css('padding-right', '0');
+
+            // Mostrar notificación verde
+            mostrarNotificacion('success', 'Abono realizado correctamente.');
         }
     }
 
@@ -186,15 +197,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function actualizarTotalDeudas() {
+        const totalDeudasElement = document.getElementById('totalDeudas');
+
+        // Calcula el total sumando los montos de todas las deudas
+        const totalDeudas = deudas.reduce((total, deuda) => total + (deuda.montoTotal - deuda.abonado), 0);
+
+        // Actualiza el contenido del elemento HTML
+        totalDeudasElement.textContent = totalDeudas.toFixed(2);
+    }
+
     // Al cargar la página, muestra las deudas
     mostrarDeudas();
 });
 
-
-
-
-
-
+// Notificacion de Agregar, Abonar y Warnings
 function mostrarNotificacion(tipo, mensaje) {
     // Elimina notificaciones existentes
     $('.alert').remove();
@@ -213,16 +230,9 @@ function mostrarNotificacion(tipo, mensaje) {
     // Desaparece la notificación después de 3 segundos
     setTimeout(() => {
         alerta.alert('close');
-    }, 3000);
+    }, 2000);
 }
-
-
-
-
-
-
-
-
+//-----------------------------------------------
 
 
 

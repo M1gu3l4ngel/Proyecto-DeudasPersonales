@@ -37,7 +37,7 @@ html::-webkit-scrollbar-thumb {
 
 /* ====== Cambiamos el fondo cuando esté en hover ====== */
 html::-webkit-scrollbar-thumb:hover {
-  background-color: #dfc81c; }
+  background-color: #5db619; }
 
 /* ====== Grow ====== */
 .hvr-grow {
@@ -172,8 +172,7 @@ header {
     font-family: 'Bungee', cursive; }
 
 .main-container {
-  padding-top: 24px;
-  padding-bottom: 24px; }
+  padding-top: 24px; }
   .main-container .main-card-box .main__card1 {
     display: flex;
     flex-wrap: wrap;
@@ -190,6 +189,7 @@ header {
       .main-container .main-card-box .main__card1 #debtList .debt-container {
         flex-basis: calc(33.33% - 13.3px);
         /* Ajusta el ancho de cada caja y el espacio entre ellas */
+        height: 295.5px;
         background-color: #fff;
         padding: 10px;
         border-radius: 6px;
@@ -207,11 +207,16 @@ header {
           font-size: 16px;
           font-weight: 600;
           color: #66C61C; }
+        .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details p {
+          display: flex;
+          align-items: center;
+          justify-content: center; }
         .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details strong {
           color: #9b9d9e;
           text-transform: uppercase;
-          font-size: 15px;
-          font-weight: 800; }
+          font-size: 14px;
+          font-weight: 800;
+          margin-right: 5px; }
         .main-container .main-card-box .main__card1 #debtList .debt-container .debt-details .amnt-pending {
           color: #fa3737; }
         .main-container .main-card-box .main__card1 #debtList .debt-container .debt-actions {
@@ -416,12 +421,12 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; }
+  padding: 0;
+  margin-top: 40px; }
   footer .footer-navbar {
     width: 100%;
     height: auto;
     padding: 10px;
-    margin-bottom: 33.6px;
     border-radius: 7px; }
   footer .footer__logo {
     margin: 0;
@@ -473,7 +478,7 @@ footer {
 /* ====== Por encima de 768px ====== */
 @media screen and (min-width: 768px) {
   .main-container .main-card-box .main__card2 {
-    height: 730px; } }
+    height: 610px; } }
 
 /* ====== Por debajo de 768px ====== */
 /* ====== Por encima de 576px ====== */

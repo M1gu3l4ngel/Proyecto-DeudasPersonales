@@ -8,7 +8,9 @@
 @media screen and (min-width: 1200px) {}
 
 /* ====== Por debajo de 1200px ====== */
-@media screen and (max-width: 1200px) {}
+@media screen and (max-width: 1200px) {
+    
+}
 
 /* ====== Por encima de 992px ====== */
 @media screen and (min-width: 992px) {}
@@ -26,7 +28,7 @@
 /* ====== Por encima de 768px ====== */
 @media screen and (min-width: 768px) {
     .main-container .main-card-box .main__card2 {
-        height: 730px;
+        height: 610px;
     }
 }
 

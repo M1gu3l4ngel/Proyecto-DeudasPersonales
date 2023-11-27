@@ -14,7 +14,14 @@
 @media screen and (min-width: 992px) {}
 
 /* ====== Por debajo de 992px ====== */
-@media screen and (max-width: 992px) {}
+@media screen and (max-width: 992px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 955px;
+    }
+}
 
 /* ====== Por encima de 768px ====== */
 @media screen and (min-width: 768px) {}
@@ -26,4 +33,13 @@
 @media screen and (min-width: 576px) {}
 
 /* ====== Por debajo de 576px ====== */
-@media screen and (max-width: 576px) {}
+@media screen and (max-width: 576px) {
+    .main-container .main-card-box .main__card1 #debtList {
+        width: 100%;
+        display: block;
+    }
+
+    .main-container .main-card-box .main__card1 #debtList .debt-container {
+        margin-bottom: 15px;
+    }
+}

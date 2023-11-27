@@ -67,14 +67,14 @@
         <!-- ====== Contenido ====== -->
         <section class="container">
             <div class="home-title">
-                <h2>Deudas Personales 💰</h2>
+                <h2>Deudas Personales</h2>
             </div>
         </section>
         <div class="container main-container">
             <div class="row gy-3 gx-3 row-cols-1 row-cols-md-2 row-cols-xl-3 d-lg-flex justify-content-lg-center">
 
                 <div class="col-md-4 col-xl-4 main-card-box">
-                    <div class="card main__card2" style="height: 625px;">
+                    <div class="card main__card2" style="height: 355px;">
                         <div class="form-container" id="debtForm">
                             <form>
                                 <label for="nombre">Nombre del Acreedor :</label>
@@ -98,26 +98,26 @@
                     <div class="main__card1">
                         <div id="debtList" class="debt-list-container"></div>
                         <div class="nodebt-message-container">
-                            <div id="noDebtMessage" class="no-debt-message" style="display: none;">Sin Deudas 😍</div>
+                            <div id="noDebtMessage" class="no-debt-message">Sin Deudas 😍</div>
                         </div>
-
                     </div>
                 </div>
+                <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 11"></div>
                 <!-- Modal para abonar directamente desde la deuda -->
                 <div class="modal fade" id="abonarModal" tabindex="-1" aria-labelledby="abonarModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content card">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="abonarModalLabel">Abonar Deuda</h5>
+                                <h5 class="modal-title" id="abonarModalLabel">Abonar Deudaxd</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <label for="abonoModal">Monto a abonar:</label>
-                                <input type="number" id="abonoModal" step="0.01" required>
+                                <input type="text" id="abonoModal" step="0.01" required autocomplete="off">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="abonarDeudaModal()">Abonar</button>
+                                <button type="button" class="btn btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-abonar" onclick="abonarDeudaModal()">Abonar</button>
                             </div>
                         </div>
                     </div>

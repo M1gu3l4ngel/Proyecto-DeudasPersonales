@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validar que los campos obligatorios estén llenos
         if (!nombre || !descripcion || isNaN(montoTotal)) {
-            alert('Por favor, completa todos los campos para agregar una deuda.');
+            mostrarNotificacion('danger', 'Por favor, completa todos los campos para agregar una deuda.');
             return;
         }
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Mostrar el modal
             $('#abonarModal').modal('show');
         } else {
-            alert('No se encontró ninguna deuda para ese nombre.');
+            mostrarNotificacion('warning', 'No se encontró ninguna deuda para ese nombre.');
         }
     }
 
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validar que el abono sea un número válido
         if (isNaN(abono)) {
-            alert('Por favor, ingresa un monto válido.');
+            mostrarNotificacion('danger', 'Por favor, ingresa un monto válido.');
             return;
         }
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const saldoPendiente = deuda.montoTotal - deuda.abonado;
 
             if (abono > saldoPendiente) {
-                alert('No puedes abonar más del saldo pendiente.');
+                mostrarNotificacion('danger', 'No puedes abonar más de la deuda pendiente.');
                 return;
             }
 
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span class="debt-description">${deuda.descripcion}</span></p>
                         <hr class="separadores">
                         <p><strong>Deuda Total:</strong><br><span class="debt-amount">$${montoTotal.toFixed(2)}</span></p>
-                        <p><strong>Abono Total:</strong><br> <span class="debt-amount">$${abonado.toFixed(2)}</span></p>
-                        <p><strong>Deuda Pendiente:</strong><br> <span class="debt-amount amnt-pending">$${saldoPendiente.toFixed(2)}</span></p>
+                        <p><strong>Abonado:</strong><br> <span class="debt-amount">$${abonado.toFixed(2)}</span></p>
+                        <p><strong>Pendiente:</strong><br> <span class="debt-amount amnt-pending">$${saldoPendiente.toFixed(2)}</span></p>
                     </div>
                     <hr class="separadores">
                     <div class="debt-actions">
@@ -195,7 +195,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+function mostrarNotificacion(tipo, mensaje) {
+    // Elimina notificaciones existentes
+    $('.alert').remove();
 
+    // Crea la notificación
+    const alerta = $(`
+    <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+        ${mensaje}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+`);
+
+    // Agrega la notificación al contenedor de notificaciones
+    $('#alertContainer').append(alerta);
+
+    // Desaparece la notificación después de 3 segundos
+    setTimeout(() => {
+        alerta.alert('close');
+    }, 3000);
+}
 
 
 

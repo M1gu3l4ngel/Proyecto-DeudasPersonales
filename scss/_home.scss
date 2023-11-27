@@ -40,7 +40,7 @@
                     /* Ajusta el ancho de cada caja y el espacio entre ellas */
 
                     background-color: #fff;
-                    padding: 24px;
+                    padding: 10px;
                     border-radius: 6px;
                     border: 1px solid rgba(0, 0, 0, 0.175);
                     text-align: center;
@@ -115,9 +115,9 @@
                     font-size: 44px;
                     text-align: center;
                     font-family: 'Bungee', cursive;
+                    display: none;
                 }
             }
-
         }
 
         .main__card2 {
@@ -174,16 +174,93 @@
                                 -webkit-box-shadow: 1px 0px 20px -11px $color-2;
                                 -moz-box-shadow: 1px 0px 20px -11px $color-2;
                                 box-shadow: 1px 0px 20px -11px $color-2;
-
                             }
                         }
                     }
-
-
-
                 }
             }
-
         }
     }
+
+    .modal-header {
+        h5 {
+            color: $color-2;
+            font-family: 'Bungee', cursive;
+        }
+
+        button {
+            color: $red-1;
+        }
+    }
+
+    .modal-body {
+        text-align: center;
+
+        label {
+            font-size: 14px;
+            color: $light-4;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 75%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            color: $light-4;
+            border: 1px solid $light-2;
+            border-radius: 7px;
+            outline: none;
+
+            &:focus {
+                -webkit-box-shadow: 1px 0px 20px -11px $color-2;
+                -moz-box-shadow: 1px 0px 20px -11px $color-2;
+                box-shadow: 1px 0px 20px -11px $color-2;
+                border-color: $color-2;
+            }
+        }
+    }
+
+    .modal-footer {
+
+        .btn-cerrar {
+            padding: 8px;
+            cursor: pointer;
+            color: $red-1;
+            border: 1px solid $red-1;
+            border-radius: 3px;
+            font-size: 14px;
+            width: 20%;
+
+            &:hover {
+                color: $white-1;
+                background-color: $red-1;
+                -webkit-box-shadow: 1px 0px 20px -11px $red-1;
+                -moz-box-shadow: 1px 0px 20px -11px $red-1;
+                box-shadow: 1px 0px 20px -11px $red-1;
+            }
+        }
+
+        .btn-abonar {
+            padding: 8px;
+            cursor: pointer;
+            background-color: $color-2;
+            color: #fff;
+            border: 1px solid $color-2;
+            border-radius: 3px;
+            font-size: 14px;
+            width: 20%;
+
+            &:hover {
+                background-color: $color-3;
+                color: $light-5;
+                -webkit-box-shadow: 1px 0px 20px -11px $color-2;
+                -moz-box-shadow: 1px 0px 20px -11px $color-2;
+                box-shadow: 1px 0px 20px -11px $color-2;
+            }
+        }
+    }
+
+    
 }
